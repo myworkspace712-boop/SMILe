@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+
+/* Dark mode via .dark class on <html> */
+@variant dark (&:where(.dark, .dark *));
+
+/* Light mode tokens */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #eff6ff;
+  --text-primary: #0c1a6b;
+  --text-secondary: #1e3a8a;
+  --accent: #f97316;
+  --card-bg: rgba(219, 234, 254, 0.7);
+  --card-border: rgba(147, 197, 253, 0.6);
+}
+
+/* Dark mode tokens */
+.dark {
+  --bg-primary: #0f0f1a;
+  --bg-secondary: #1a1a2e;
+  --text-primary: #fff7ed;
+  --text-secondary: #fed7aa;
+  --accent: #fb923c;
+  --card-bg: rgba(30, 20, 10, 0.7);
+  --card-border: rgba(251, 146, 60, 0.3);
+}
+
+
+/* ── Theme tokens ─────────────────────────────────────────────────────────
+   Replaces tailwind.config.js in v4.
+   font-sans / font-display map directly to these CSS variables.
+────────────────────────────────────────────────────────────────────────── */
+
+@theme {
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "Syne", sans-serif;
+
+  --color-brand-navy: #1a2368;
+  --color-brand-mid: #2a3680;
+  --color-brand-light: #3d4fa0;
+  --color-brand-orange: #FE471D;
+  --color-brand-orange-soft: #ff6b3d;
+}
+
+/* Durations */
+
+
+/* ── Keyframes ─────────────────────────────────────────────────────────── */
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes backdropFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spinOnce {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floatBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+/* @keyframes floatCard {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+} */
+
+@keyframes stickerFloat {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-6px) rotate(0.5deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(0deg);
+  }
+
+  75% {
+    transform: translateY(-6px) rotate(-0.5deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes calendarFlip {
+  0% {
+    opacity: 0;
+    transform: rotateX(-90deg);
+  }
+
+  60% {
+    opacity: 1;
+    transform: rotateX(12deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+}
+
+.animate-calendar-flip-up {
+  animation: calendarFlip 700ms ease-out;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.perspective-distant {
+  perspective: 1200px;
+}
+
+/* ── Custom animation utilities (@utility = v4 way) ─────────────────────
+   All layout / colour / spacing stays in Tailwind classes.
+   Only animation definitions live here.
+────────────────────────────────────────────────────────────────────────── */
+
+@utility animate-ticker {
+  animation: ticker 23s linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@utility animate-slide-in-left {
+  animation: slideInLeft 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@utility animate-backdrop-fade {
+  animation: backdropFade 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@utility animate-fade-in-up {
+  animation: fadeInUp 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@utility animate-fade-in-down {
+  animation: fadeInDown 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@utility animate-hero {
+  animation: heroFadeIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility animate-hero-delay {
+  animation: heroFadeIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+@utility animate-hero-delay-2 {
+  animation: heroFadeIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+}
+
+@utility animate-spin-once {
+  animation: spinOnce 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@utility animate-bounce-slow {
+  animation: floatBounce 2.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}

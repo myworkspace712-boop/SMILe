@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { TbArrowRight, TbCheck } from "react-icons/tb";
-import { AI_CARDS, EARLY, PRO, WELLBEING, TESTIMONIALS } from "../Data/Careers.js";
+import { AI_CARDS, EARLY, PRO, WELLBEING, TESTIMONIALS } from "../Data/careers.js";
 
 
 export default function Careers() {
